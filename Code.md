@@ -257,3 +257,6 @@ classDiagram
 | Authentication fails | Invalid token | Check auth token |
 | Message decoding fails | Type mismatch | Verify payload structure |
 | Unexpected disconnects | Network instability | Implement reconnection logic |
+## Diagram
+# Class diagram
+![Class Diagram](./diagram/ClassDiagram.png)
