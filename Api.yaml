@@ -1,28 +1,28 @@
 openapi: 3.0.3
 info:
-  title: Event API
+  title: Order API
   version: 1.0.0
-  description: API to retrieve details about a specific event and understand event status lifecycle.
+  description: API to retrieve details about a specific Order and understand order status lifecycle.
 
 paths:
-  /events/{id}:
+  /Orders/{id}:
     get:
-      summary: Get event by ID
-      description: Retrieves details of a specific event by its unique identifier.
+      summary: Get Order by ID
+      description: Retrieves details of a specific Order by its unique identifier.
       parameters:
         - in: path
           name: id
           required: true
           schema:
             type: string
-          description: Unique identifier of the event
+          description: Unique identifier of the order
       responses:
         '200':
-          description: OK - Event found
+          description: OK - Order found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Event'
+                $ref: '#/components/schemas/Orders'
         '404':
           description: Not Found
         '500':
@@ -30,7 +30,7 @@ paths:
 
 components:
   schemas:
-    Event:
+    Order:
       type: object
       properties:
         id:
@@ -50,7 +50,7 @@ components:
         location:
           type: string
           example: Open Air Mall
-        eventStatus:
+        orderStatus:
           type: string
           enum:
             - submitted
@@ -61,7 +61,7 @@ components:
             - rejected
           example: submitted
           description: >
-            Event status lifecycle:
+            Order status lifecycle:
               - submitted: Received by backend, not yet sent to execution system.
               - routed: Sent to execution system.
               - partially filled: Partially completed.

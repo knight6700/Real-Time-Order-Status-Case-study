@@ -10,18 +10,34 @@ import Foundation
 /// - Note: Designed to work with a defined `Environment` for flexible baseURL handling.
 final class WebSocketService: WebSocketClient {
     
+    // MARK: - Singleton Implementation
+    static let shared = WebSocketService()
     // MARK: - Private Properties
-    
     /// The underlying WebSocket task. When set, updates the `isConnected` state.
     private var webSocketTask: URLSessionWebSocketTask? {
-        didSet { isConnected = webSocketTask != nil }
+        didSet {
+            if let task = webSocketTask {
+                switch task.state {
+                case .running:
+                    connectionState = .connected
+                case .canceling, .completed:
+                    connectionState = .disconnected
+                case .suspended:
+                    connectionState = .connecting
+                @unknown default:
+                    connectionState = .failed
+                }
+            } else {
+                connectionState = .disconnected
+            }
+        }
     }
 
     private let session: URLSession
     private let decoder: JSONDecoder
     private let encoder: JSONEncoder
     private let environment: Environment
-    private var isConnected = false
+    private(set) var connectionState: ConnectionState = .disconnected
 
     // MARK: - Computed Properties
     
@@ -80,7 +96,7 @@ final class WebSocketService: WebSocketClient {
 
     /// Connects to the WebSocket server only if not already connected.
     private func connectIfNeeded() throws {
-        guard !isConnected else { return }
+        guard connectionState == .disconnected else { return }
         try connect()
     }
 

@@ -1,7 +1,7 @@
 # WebSocket Client Documentation
 
 ## Overview
-This documentation covers the complete WebSocket client implementation for handling real-time events in a Swift application, including the core `WebSocketService` implementation.
+This documentation covers the complete WebSocket client implementation for handling real-time Orders in a Swift application, including the core `WebSocketService` implementation.
 
 ## Table of Contents
 1. [Core Components](#core-components)
@@ -71,18 +71,18 @@ struct WebSocketMessage<T: Codable>: Codable
   - `payload`: Generic content
   - `meta`: Optional timestamp metadata
 
-### EventDTO
+### OrderDTO
 ```swift
-struct EventDTO: Decodable
+struct OrderDTO: Decodable
 ```
-- Event data model containing:
+- Order data model containing:
   - `id`, `title`, `location`
   - `startTime`/`endTime` dates
-  - `eventStatus` enum
+  - `orderStatus` enum
 
-### EventStatus
+### OrderStatus
 ```swift
-enum EventStatus: String, Decodable
+enum OrderStatus: String, Decodable
 ```
 - Status cases with display extensions:
   - `.submitted`, `.routed`, etc.
@@ -133,8 +133,48 @@ Comprehensive error cases:
 - Message processing errors
 - Server communication issues
 - Encoding/decoding failures
+### 🔌 `ConnectionState` Enum
 
----
+The `ConnectionState` enum represents the lifecycle state of a WebSocket connection.
+
+```swift
+enum ConnectionState: Equatable {
+    case connected
+    case disconnected
+    case connecting
+    case failed
+}
+```
+#### States:
+
+* `connected`:
+  Indicates that the WebSocket is successfully connected and ready to send/receive messages.
+
+* `disconnected`:
+  Represents a clean or unexpected disconnection. No active WebSocket task is running.
+
+* `connecting`:
+  The WebSocket is in the process of establishing a connection. Typically mapped to `.suspended` task state.
+
+* `failed`:
+  Indicates a failure occurred while trying to connect or during active communication (e.g. due to network issues or server-side error).
+
+#### Usage:
+
+This enum is used to monitor and react to connection state changes in the `WebSocketService`, enabling components to display appropriate UI or retry logic based on the real-time WebSocket status.
+
+```swift
+switch webSocketService.shared.connectionState {
+case .connected:
+    print("Connected to WebSocket.")
+case .disconnected:
+    print("WebSocket is disconnected.")
+case .connecting:
+    print("Trying to connect...")
+case .failed:
+    print("Connection failed.")
+}
+```
 
 ## Environment Configuration
 
@@ -174,15 +214,15 @@ try await service.authenticate(token: "user_token")
 
 ### Sending Messages
 ```swift
-let request = EventRequest(action: "subscribe", eventId: "123")
+let request = OrderRequest(action: "subscribe", orderId: "123")
 try await service.send(request)
 ```
 
 ### Receiving Updates
 ```swift
-let stream = service.receive(as: WebSocketMessage<EventDTO>.self)
+let stream = service.receive(as: WebSocketMessage<OrderDTO>.self)
 for try await message in stream {
-    handleEvent(message.payload)
+    handleOrder(message.payload)
 }
 ```
 
@@ -193,7 +233,7 @@ service.disconnect()
 
 ### Mock Usage
 ```swift
-let mock = MockWebSocketClient(mockUpdates: [testEvent])
+let mock = MockWebSocketClient(mockUpdates: [testOrder])
 ```
 
 ---
@@ -219,6 +259,37 @@ let mock = MockWebSocketClient(mockUpdates: [testEvent])
    - Reuse WebSocketService instances
    - Minimize message size
    - Consider compression for large payloads
+
+---
+Here’s your **cleaned-up and properly indented README-style** Markdown section for the Design Pattern using a Singleton WebSocket:
+
+---
+
+## **Design Pattern**
+
+We use the **Singleton** pattern for managing the WebSocket connection:
+
+### 1. **Single Connection Management** 🎯
+
+* **Network Efficiency**: WebSocket connections are expensive to establish (TCP handshake + WebSocket upgrade).
+* **Prevents Duplicate Connections**: Singleton ensures all app components reuse the same connection.
+
+```swift
+// ❌ Without Singleton:
+let client1 = WebSocketClient()  // New connection
+let client2 = WebSocketClient()  // Another connection (wasteful)
+```
+
+### 2. **Centralized State Control** 🔄
+
+* **Consistent State**: All parts of the app see the same connection status (connected/disconnected).
+* **Synchronized Reconnects**: No competing reconnection attempts from multiple instances.
+
+```swift
+// ✅ With Singleton:
+orderView.observe(WebSocketClient.shared.connectionState)
+tradeView.observe(WebSocketClient.shared.connectionState)
+```
 
 ---
 

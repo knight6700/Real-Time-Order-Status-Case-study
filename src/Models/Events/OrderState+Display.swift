@@ -1,6 +1,6 @@
 import SwiftUI
 
-extension EventStatus {
+extension OrderStatus {
     /// Returns a user-friendly, displayable title for each order status.
     ///
     /// - Note: These values should eventually be localized for international users.
@@ -24,7 +24,7 @@ extension EventStatus {
         case .rejected: "Rejected"
         }
     }
-    /// Returns the associated UI color for each order status, used for consistent visual feedback.
+    /// Returns the associated UI color for each order status, used for consistent visual feedback in Order details or Toast Message.
     ///
     /// | Status            | Color    |
     /// |-------------------|----------|

@@ -10,7 +10,7 @@ To begin, it's important to unpack the initial request: "We want users to instan
 
 * A trading backend and order management system already exists and emits order events.
 * Integration with Trading Execution Systems(Third Parties) throw webhook.
-* Frontend for reciving and handling event status at real time.
+* Frontend for reciving and handling order status at real time.
 * Security and performance are critical given the financial domain.
 * Users may be logged in from multiple devices simultaneously.
 
@@ -27,7 +27,7 @@ To begin, it's important to unpack the initial request: "We want users to instan
 * No information is provided about multi-device scenarios or user session management.
 * There is no mention of degraded mode, fallback behavior, or offline handling.
 * UX expectations for how updates should appear on mobile and web are not defined.
-* UI expectations for how updates manually pull to refesh in event details.
+* UI expectations for how updates manually pull to refesh in order details.
 
 ### MVP vs Full Solution
 ```mermaid
@@ -76,9 +76,12 @@ To meet the business goals, we’ll architect a loosely coupled, event-driven sy
 6. **Load Balancer**: Used to manage and distribute incoming traffic across multiple servers to ensure reliability and performance.
 7. **Rate Limiter**: Helps prevent abuse by blocking duplicate or excessive requests, ensuring fair usage and protecting backend resources.
 ### Architecture Diagram
-![Architecture Diagram](./diagram/architecture.jpeg)
-*Our Architecture visualization*
+![Archticture Diagram](./diagram/archtictureDiagram.png)
+*Our Sequence visualization*
 
+### Sequence Diagram
+![Sequence Diagram](./diagram/sequenceDiagram.jpeg)
+*Our Sequence visualization*
 ### Real-Time Update Mechanism
 
 * **Primary Channel**: WebSocket for low-latency, bi-directional communication
@@ -110,7 +113,6 @@ To meet the business goals, we’ll architect a loosely coupled, event-driven sy
 * The UI shows the most recent available data along with the time it was last updated, so users know how fresh the information is.
 * To handle short-term disruptions or late client connections, the system keeps a brief history of recent updates (around 5–10 minutes).
 * If real-time updates via WebSocket, the system relies on this cache or switches to API polling to ensure users still see relevant information.
-
 
 ### Tech Stack Choices
 
