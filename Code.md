@@ -198,26 +198,6 @@ let mock = MockWebSocketClient(mockUpdates: [testEvent])
 
 ---
 
-## Architecture Diagram
-
-```mermaid
-classDiagram
-    class WebSocketService {
-        -webSocketTask: URLSessionWebSocketTask?
-        -isConnected: Bool
-        +authenticate(token: String)
-        +send(T: Encodable)
-        +receive(T.Type)
-        +disconnect()
-    }
-    
-    WebSocketService --> WebSocketClient : implements
-    WebSocketService --> Environment : uses
-    WebSocketService --> WebSocketError : throws
-```
-
----
-
 ## Best Practices
 
 1. **Connection Management**
