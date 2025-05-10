@@ -23,7 +23,7 @@ To begin, it's important to unpack the initial request: "We want users to instan
 
 ### What Makes the Requirement Vague?
 
-* It lacks specific performance benchmarks (e.g., maximum update delay).
+* It lacks specific performance benchmarks (e.g., maximum update delay and standard response time).
 * No information is provided about multi-device scenarios or user session management.
 * There is no mention of degraded mode, fallback behavior, or offline handling.
 * UX expectations for how updates should appear on mobile and web are not defined.
@@ -77,11 +77,10 @@ To meet the business goals, we’ll architect a loosely coupled, event-driven sy
 7. **Rate Limiter**: Helps prevent abuse by blocking duplicate or excessive requests, ensuring fair usage and protecting backend resources.
 ### Architecture Diagram
 ![Archticture Diagram](./diagram/archtictureDiagram.png)
-*Our Architecture visualization*
 
 ### Sequence Diagram
 ![Sequence Diagram](./diagram/sequenceDiagram.jpeg)
-*Our Sequence visualization*
+
 ### Real-Time Update Mechanism
 
 * **Primary Channel**: WebSocket for low-latency, bi-directional communication
@@ -111,7 +110,6 @@ To meet the business goals, we’ll architect a loosely coupled, event-driven sy
 
 * When the user goes offline, the app automatically falls back to cached data to keep the experience smooth and uninterrupted.
 * The UI shows the most recent available data along with the time it was last updated, so users know how fresh the information is.
-* To handle short-term disruptions or late client connections, the system keeps a brief history of recent updates (around 5–10 minutes).
 * If real-time updates via WebSocket, the system relies on this cache or switches to API polling to ensure users still see relevant information.
 
 ### Tech Stack Choices

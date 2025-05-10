@@ -61,3 +61,4 @@ Here’s a typical order lifecycle:
 4. 📈 **`filled`** – Order is fully executed.
 5. 🗑️ **`Cancelled`** – Order is cancelled before completion.
 5. ❌ **`rejected`** – Order is rejected.
+
