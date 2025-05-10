@@ -147,4 +147,6 @@ To meet the business goals, we’ll architect a loosely coupled, event-driven sy
 ### Mentorship
 
 ### API Documnetation
-[View API Documentation](./APIDocumentation.md)
+[View API documentation](./APIDocumentation.md)
+### Code Documnetation
+[View code documentation](./Code.md)
