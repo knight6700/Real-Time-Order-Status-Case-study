@@ -21,7 +21,7 @@ This document outlines my approach to onboarding and mentoring a junior engineer
 * Install required tooling (WebSocket clients, Kafka tools, etc.)
 * Grant access to relevant repositories and documentation
 * Walk through local testing environment setup
-* Introduce CI/CD tools we are using it (eg: SonarQube, Bitrise, fastlan) [More details](./src/CICD/CI:CD.md)
+* Introduce CI/CD tools we are using it (eg: SonarQube, Bitrise, fastlan) [More details](./CI:CD.md)
 
 **Day 5: Initial Task Assignment**
 * Assign a small, well-scoped task with clear boundaries
