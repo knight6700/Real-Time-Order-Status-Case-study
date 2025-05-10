@@ -310,4 +310,4 @@ tradeView.observe(WebSocketClient.shared.connectionState)
 | Unexpected disconnects | Network instability | Implement reconnection logic |
 ## Diagram
 # Class diagram
-![Class Diagram](./diagram/ClassDiagram.png)
+![Class Diagram](./diagram/classDiagram.png)

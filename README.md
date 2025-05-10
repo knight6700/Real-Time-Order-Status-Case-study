@@ -77,7 +77,7 @@ To meet the business goals, we’ll architect a loosely coupled, event-driven sy
 7. **Rate Limiter**: Helps prevent abuse by blocking duplicate or excessive requests, ensuring fair usage and protecting backend resources.
 ### Architecture Diagram
 ![Archticture Diagram](./diagram/archtictureDiagram.png)
-*Our Sequence visualization*
+*Our Architecture visualization*
 
 ### Sequence Diagram
 ![Sequence Diagram](./diagram/sequenceDiagram.jpeg)
