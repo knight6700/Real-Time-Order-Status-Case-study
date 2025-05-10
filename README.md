@@ -144,9 +144,9 @@ To meet the business goals, we’ll architect a loosely coupled, event-driven sy
 * Deploy WebSocket servers across regions (e.g., via AWS Global Accelerator)
 * Use Geo-aware DNS to route clients to the nearest gateway
 * Use Kafka replication or global pub/sub (e.g., GCP Pub/Sub) for data consistency
-### Mentorship
 
 ### API Documnetation
 [View API documentation](./APIDocumentation.md)
+
 ### Code Documnetation
 [View code documentation](./Code.md)
