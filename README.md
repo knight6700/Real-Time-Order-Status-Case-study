@@ -71,7 +71,7 @@ To meet the business goals, we’ll architect a loosely coupled, event-driven sy
 6. **Load Balancer**: Used to manage and distribute incoming traffic across multiple servers to ensure reliability and performance.
 7. **Rate Limiter**: Helps prevent abuse by blocking duplicate or excessive requests, ensuring fair usage and protecting backend resources.
 ### Architecture Diagram
-![Architecture Diagram](./diagram.architecture.jpeg)
+![Architecture Diagram](./diagram/architecture.jpeg)
 *Our Architecture visualization*
 
 ### Real-Time Update Mechanism
@@ -117,7 +117,7 @@ To meet the business goals, we’ll architect a loosely coupled, event-driven sy
 ---
 
 ## 3. Mentorship Plan
-[View mentorship plan Documentation](./mentorshipPlan)
+[View mentorship plan Documentation](./mentorshipPlan.md)
 
 ---
 
