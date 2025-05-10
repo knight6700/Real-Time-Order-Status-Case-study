@@ -30,7 +30,12 @@ To begin, it's important to unpack the initial request: "We want users to instan
 * UI expectations for how updates manually pull to refesh in event details.
 
 ### MVP vs Full Solution
-
+```mermaid
+pie
+    title Feature Comparison
+    "MVP" : 45
+    "Full Solution" : 55
+```
 #### Minimum Viable Product (MVP):
 
 * Support for mobile background notifications (e.g., FCM).
