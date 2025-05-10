@@ -8,7 +8,7 @@ extension OrderStatus {
     /// | Status            | Title                |
     /// |-------------------|----------------------|
     /// | `.submitted`      | "Submitted"          |
-    /// | `.routed`         | "Routed"             |
+    /// | `.routed`         | "InProgress"             |
     /// | `.partiallyFilled`| "Partially Completed"|
     /// | `.filled`         | "Completed"          |
     /// | `.cancelled`      | "Cancelled"          |
@@ -17,7 +17,7 @@ extension OrderStatus {
     var title: String {
         switch self {
         case .submitted: "Submitted"
-        case .routed: "Routed"
+        case .routed: "InProgress"
         case .partiallyFilled: "Partially Completed"
         case .filled: "Completed"
         case .cancelled: "Cancelled"
