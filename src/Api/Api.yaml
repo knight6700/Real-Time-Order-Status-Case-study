@@ -1,0 +1,70 @@
+openapi: 3.0.3
+info:
+  title: Event API
+  version: 1.0.0
+  description: API to retrieve details about a specific event and understand event status lifecycle.
+
+paths:
+  /events/{id}:
+    get:
+      summary: Get event by ID
+      description: Retrieves details of a specific event by its unique identifier.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: Unique identifier of the event
+      responses:
+        '200':
+          description: OK - Event found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+
+components:
+  schemas:
+    Event:
+      type: object
+      properties:
+        id:
+          type: string
+          example: evt_12345
+        title:
+          type: string
+          example: Annual Conference
+        startTime:
+          type: string
+          format: date-time
+          example: 2025-06-01T09:00:00Z
+        endTime:
+          type: string
+          format: date-time
+          example: 2025-06-01T17:00:00Z
+        location:
+          type: string
+          example: Open Air Mall
+        eventStatus:
+          type: string
+          enum:
+            - submitted
+            - routed
+            - partially filled
+            - filled
+            - cancelled
+            - rejected
+          example: submitted
+          description: >
+            Event status lifecycle:
+              - submitted: Received by backend, not yet sent to execution system.
+              - routed: Sent to execution system.
+              - partially filled: Partially completed.
+              - filled: Fully completed.
+              - cancelled: Cancelled before completion.
+              - rejected: Rejected by system or external processor.
