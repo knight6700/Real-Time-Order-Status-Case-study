@@ -41,3 +41,7 @@ This document outlines my approach to onboarding and mentoring a junior engineer
 I would delegate tasks that:
 1. Have clear requirements and acceptance criteria
 2. Are appropriately scoped for their skill level
+
+## KP's Plan:
+
+- We use the Definition of Done (DoD) not just as a quality gate, but as a foundation for how we measure team performance. By ensuring every story meets our agreed-upon DoD—including peer-reviewed code, passing tests, integration, and acceptance—we create a consistent baseline for tracking actual progress. This clarity allows us to measure **velocity** accurately (how much value the team delivers per sprint) and align it with **capacity** (how much the team can realistically take on). Together, these metrics help us plan smarter, deliver predictably, and continuously improve our development flow.

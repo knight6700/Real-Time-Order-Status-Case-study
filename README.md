@@ -119,6 +119,11 @@ To meet the business goals, we’ll architect a loosely coupled, event-driven sy
 * **Mobile/Web**: Swift, Kotlin
 * **Monitoring**: Prometheus + Grafana for system metrics, Sentry for client-side errors
 
+### Team Stack:
+- 1 Staff Engineer
+- 1 iOS Developer
+- 1 Android Developer
+- 2 Backend Developers (but in MVP will be only 1)
 ---
 
 ## 3. Mentorship Plan
