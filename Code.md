@@ -260,11 +260,6 @@ let mock = MockWebSocketClient(mockUpdates: [testOrder])
    - Minimize message size
    - Consider compression for large payloads
 
----
-Here’s your **cleaned-up and properly indented README-style** Markdown section for the Design Pattern using a Singleton WebSocket:
-
----
-
 ## **Design Pattern**
 
 We use the **Singleton** pattern for managing the WebSocket connection:
