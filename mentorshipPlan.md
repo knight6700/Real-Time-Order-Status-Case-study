@@ -42,6 +42,14 @@ I would delegate tasks that:
 1. Have clear requirements and acceptance criteria
 2. Are appropriately scoped for their skill level
 
+## Learning Curve Strategy:
+- technical knowledge-sharing sessions for the team.
+- Rotate session ownership to encourage cross-functional learning and team engagement
+- Archive recordings and slide in drive
+  
 ## KP's Plan:
 
 - We use the Definition of Done (DoD) not just as a quality gate, but as a foundation for how we measure team performance. By ensuring every story meets our agreed-upon DoD—including peer-reviewed code, passing tests, integration, and acceptance—we create a consistent baseline for tracking actual progress. This clarity allows us to measure **velocity** accurately (how much value the team delivers per sprint) and align it with **capacity** (how much the team can realistically take on). Together, these metrics help us plan smarter, deliver predictably, and continuously improve our development flow.
+- Every quarter, we will evaluate key performance metrics to assess our progress toward quarterly goals and long-term vision.
+- These evaluations will help us identify areas of improvement, celebrate achievements, and adjust our strategies as needed to stay aligned with our mission. 
+
