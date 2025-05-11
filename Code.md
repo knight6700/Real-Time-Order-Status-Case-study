@@ -287,7 +287,7 @@ tradeView.observe(WebSocketClient.shared.connectionState)
 ```
 ### Full Feature Scale:
 - Implement a Dependency Container to manage and inject a shared instance of `WebSocketClient`, ensuring centralized control, improved testability, and better resource management across the app.
-
+- Apply modularization to the socket layer to ensure it is reusable, testable, and easily maintainable across all modules within the app.
 ---
 
 ## Dependencies
