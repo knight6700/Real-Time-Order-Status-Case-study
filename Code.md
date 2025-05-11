@@ -290,6 +290,8 @@ let client2 = WebSocketClient()  // Another connection (wasteful)
 orderView.observe(WebSocketClient.shared.connectionState)
 tradeView.observe(WebSocketClient.shared.connectionState)
 ```
+### Full Feature Scale:
+- Implement a Dependency Container to manage and inject a shared instance of `WebSocketClient`, ensuring centralized control, improved testability, and better resource management across the app.
 
 ---
 
