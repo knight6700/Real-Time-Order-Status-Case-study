@@ -155,3 +155,6 @@ To meet the business goals, we’ll architect a loosely coupled, event-driven sy
 
 ### Code Documnetation
 [View code documentation](./Code.md)
+## Key Improvemnt
+- Enhanced system architecture by introducing a load balancer and rate limiting to improve scalability, availability, and security.
+- Planned real-time capabilities for the next version using Server-Sent Events (SSE) to enable efficient live updates.
